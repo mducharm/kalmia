@@ -5,7 +5,6 @@
   let severity = 1;
   let medicineTaken = false;
   let notes = "";
-  let lengthOfOccurrence: number;
 
   let now = new Date();
 
@@ -19,7 +18,6 @@
         severity,
         medicineTaken,
         notes,
-        lengthOfOccurrence,
         dateOfOccurrence,
       };
 
@@ -60,11 +58,6 @@
   <div class="my-3">
     <input type="date" bind:value={dateOfOccurrence} />
     <label for="date-of-occurrence">Date of occurrence</label>
-  </div>
-
-  <div class="my-3">
-    <input type="number" bind:value={lengthOfOccurrence} />
-    <label for="date-of-occurrence">hours</label>
   </div>
 
   <div class="my-3">
