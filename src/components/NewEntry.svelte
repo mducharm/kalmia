@@ -1,28 +1,35 @@
-<script>
+<script lang="typescript">
+  import { Database } from '../db/Database.js'
+  let db = new Database();
+  
   let severity = 1;
   let medicineTaken = false;
   let notes = "";
-  let lengthOfOccurrence;
+  let lengthOfOccurrence: number;
 
   let now = new Date();
 
-  $: dateString = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
+  $: dateOfOccurrence = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
     .toISOString()
     .split("T")[0];
 
     function saveForm() {
       console.log("Form saved");
+      let entry = {
+        severity,
+        medicineTaken,
+        notes,
+        lengthOfOccurrence,
+        dateOfOccurrence,
+      };
+
+      db.entries.add(entry);
     }
 </script>
 
 <h1>New Entry</h1>
 
-<p>{dateString}</p>
-<p>{notes}</p>
-<p>{medicineTaken}</p>
-<p>{severity}</p>
-
-<form class="flex flex-col mb-5" on:submit|preventDefault="{saveForm}">
+<form class="flex flex-col mb-5" on:submit|preventDefault>
   <div class="my-3">
     <input type="checkbox" name="medicine-taken" bind:checked={medicineTaken} />
     <label for="medicine-taken">Medicine Taken? </label>
@@ -51,7 +58,7 @@
   </div>
 
   <div class="my-3">
-    <input type="date" bind:value={dateString} />
+    <input type="date" bind:value={dateOfOccurrence} />
     <label for="date-of-occurrence">Date of occurrence</label>
   </div>
 
