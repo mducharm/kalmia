@@ -1,8 +1,9 @@
 import Dexie from 'dexie';
+import type { Entry, Label } from 'src/types';
 
 export class Database extends Dexie {
-    entries: Dexie.Table<IEntry, number>;
-    labels: Dexie.Table<ILabel, number>;
+    entries: Dexie.Table<Entry, number>;
+    labels: Dexie.Table<Label, number>;
     
     constructor() {  
       super("Database");
@@ -16,15 +17,4 @@ export class Database extends Dexie {
     }
 }
 
-export interface IEntry {
-    id?: number,
-    severity: number,
-    medicineTaken: boolean,
-    dateOfOccurrence: string,
-    notes: string,
-}
-
-export interface ILabel {
-    id?: number,
-    name: string,
-}
+export const db = new Database();
