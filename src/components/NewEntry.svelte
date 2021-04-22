@@ -1,27 +1,29 @@
 <script lang="typescript">
-  import { db } from '../db/Database.js'
-  
+  import { db } from "../db/Database.js";
+
   let severity = 1;
   let medicineTaken = false;
   let notes = "";
 
   let now = new Date();
 
-  $: dateOfOccurrence = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
+  $: dateOfOccurrence = new Date(
+    now.getTime() - now.getTimezoneOffset() * 60000
+  )
     .toISOString()
     .split("T")[0];
 
-    function saveForm() {
-      console.log("Form saved");
-      let entry = {
-        severity,
-        medicineTaken,
-        notes,
-        dateOfOccurrence,
-      };
+  function saveForm() {
+    console.log("Form saved");
+    let entry = {
+      severity,
+      medicineTaken,
+      notes,
+      dateOfOccurrence,
+    };
 
-      db.entries.add(entry);
-    }
+    db.entries.add(entry);
+  }
 </script>
 
 <h1>New Entry</h1>
@@ -65,6 +67,11 @@
   </div>
 
   <div class="my-3">
-    <button on:click={saveForm}>Submit</button>
+    <button
+      on:click={saveForm}
+      class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded"
+    >
+      Submit
+    </button>
   </div>
 </form>
