@@ -1,6 +1,5 @@
 <script lang="typescript">
-  import { Database } from '../db/Database.js'
-  let db = new Database();
+  import { db } from '../db/Database.js'
   
   let severity = 1;
   let medicineTaken = false;
