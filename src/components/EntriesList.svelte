@@ -12,7 +12,7 @@
 
   function severityColor(num: number) {
     let severity = getSeverityColor(num);
-    return `text-${severity}-800 bg-${severity}-200`;
+    return `text-${severity}-800 bg-${severity}-300`;
   }
 </script>
 

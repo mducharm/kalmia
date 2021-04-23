@@ -32,17 +32,20 @@
   }
 </script>
 
-<h1>Settings</h1>
-
-<button on:click={() => currentPage.set({ name: "About", component: About })}>
+<button
+  on:click={() => currentPage.set({ name: "About", component: About })}
+  class="bg-gray-100 hover:bg-gray-200 font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded"
+>
   About
 </button>
 
 <div class="container mx-auto my-8">
-    
   <h1>Labels</h1>
 
-  <input type="text" bind:value={newLabel} /><button on:click={addNewLabel}
+  <input type="text" bind:value={newLabel} />
+  <button
+    on:click={addNewLabel}
+    class="bg-gray-100 hover:bg-gray-200 font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded"
     >Add</button
   >
   <div class="flex flex-wrap justify-center my-4">
@@ -77,7 +80,11 @@
   </div>
 </div>
 
-<button on:click={exportToXlsx}>Export to Excel</button>
+<button
+  on:click={exportToXlsx}
+  class="bg-gray-100 hover:bg-gray-200 font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded"
+  >Export to Excel</button
+>
 
 <button
   on:click={clearDatabase}
