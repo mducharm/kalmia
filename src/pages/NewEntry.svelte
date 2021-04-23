@@ -1,12 +1,16 @@
 <script lang="typescript">
   import { db } from "../db/Database.js";
-  import Modal from '../components/Modal.svelte';
+  import Modal from "../components/Modal.svelte";
+  import { onMount } from "svelte";
+  import type { Label } from "src/types.js";
 
   let showModal = false;
 
   let severity = 1;
   let medicineTaken = false;
   let notes = "";
+  let allLabels: Label[] = [];
+  let labels: string[] = [];
 
   let now = new Date();
 
@@ -21,6 +25,7 @@
     let entry = {
       severity,
       medicineTaken,
+      labels,
       notes,
       dateOfOccurrence,
     };
@@ -29,9 +34,13 @@
 
     showModal = true;
   }
+
+  onMount(async () => {
+    allLabels = await db.labels.toArray();
+  });
 </script>
 
-<Modal bind:showModal></Modal>
+<Modal bind:showModal />
 
 <h1>New Entry</h1>
 
@@ -66,6 +75,14 @@
   <div class="my-3">
     <input type="date" bind:value={dateOfOccurrence} />
     <label for="date-of-occurrence">Date of occurrence</label>
+  </div>
+
+  <div class="flex flex-col my-3">
+    <h1>Labels</h1>
+    {#each allLabels as label}
+      <input type="checkbox" />
+      <label for="date-of-occurrence">{label.name}</label>
+    {/each}
   </div>
 
   <div class="my-3">

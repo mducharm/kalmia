@@ -3,6 +3,7 @@ export type Entry = {
     severity: number,
     medicineTaken: boolean,
     dateOfOccurrence: string,
+    labels: string[]
     notes: string,
 }
 

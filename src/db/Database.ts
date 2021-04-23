@@ -8,7 +8,7 @@ export class Database extends Dexie {
     constructor() {  
       super("Database");
       this.version(1).stores({
-        entries: '++id, severity, medicineTaken, dateOfOccurrence, notes',
+        entries: '++id, severity, medicineTaken, dateOfOccurrence, *labels, notes',
         labels: '++id, name'
       });
       
