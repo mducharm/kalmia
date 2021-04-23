@@ -2,6 +2,7 @@
   import { onMount } from "svelte";
   import { db } from "../db/Database";
   import type { Entry, Label } from "src/types";
+  import { getSeverityColor } from "../utils";
 
   let entries: Entry[] = [];
 
@@ -10,29 +11,7 @@
   });
 
   function severityColor(num: number) {
-    let severity;
-
-    switch (num) {
-      case 1:
-        severity = "emerald";
-        break;
-      case 2:
-        severity = "bluegray";
-        break;
-      case 3:
-        severity = "amber";
-        break;
-      case 4:
-        severity = "orange";
-        break;
-      case 5:
-        severity = "red";
-        break;
-      default:
-        severity = "green";
-        break;
-    }
-
+    let severity = getSeverityColor(num);
     return `text-${severity}-800 bg-${severity}-200`;
   }
 </script>
