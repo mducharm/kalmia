@@ -38,31 +38,43 @@
   About
 </button>
 
-<div>
+<div class="container mx-auto my-8">
+    
   <h1>Labels</h1>
 
   <input type="text" bind:value={newLabel} /><button on:click={addNewLabel}
     >Add</button
   >
-  {#each labels as label}
-    <p>
-      {label.name}
-
-      <button
-        on:click={removeLabel(label)}
-        class="inline-flex items-center hover:bg-green-100 border border-green-50 hover:border-green-300 hover:text-green-900 focus:outline-none rounded-full p-2 hover:cursor-pointer"
+  <div class="flex flex-wrap justify-center my-4">
+    {#each labels as label}
+      <div
+        class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-indigo-100 bg-indigo-700 border border-indigo-700 "
       >
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="fill-current w-4 h-4 pt-1"
-          viewBox="0 0 24 24"
-          ><path
-            d="M24 20.188l-8.315-8.209 8.2-8.282-3.697-3.697-8.212 8.318-8.31-8.203-3.666 3.666 8.321 8.24-8.206 8.313 3.666 3.666 8.237-8.318 8.285 8.203z"
-          /></svg
-        >
-      </button>
-    </p>
-  {/each}
+        <div class="text-xs font-normal leading-none max-w-full flex-initial">
+          {label.name}
+        </div>
+        <div class="flex flex-auto flex-row-reverse">
+          <div on:click={removeLabel(label)}>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="100%"
+              height="100%"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="feather feather-x cursor-pointer hover:text-indigo-400 rounded-full w-4 h-4 ml-2"
+            >
+              <line x1="18" y1="6" x2="6" y2="18" />
+              <line x1="6" y1="6" x2="18" y2="18" />
+            </svg>
+          </div>
+        </div>
+      </div>
+    {/each}
+  </div>
 </div>
 
 <button on:click={exportToXlsx}>Export to Excel</button>
