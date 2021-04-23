@@ -8,13 +8,64 @@
   onMount(async () => {
     entries = await db.entries.toArray();
   });
+
+  function severityColor(num: number) {
+    let severity;
+
+    switch (num) {
+      case 1:
+        severity = "emerald";
+        break;
+      case 2:
+        severity = "bluegray";
+        break;
+      case 3:
+        severity = "amber";
+        break;
+      case 4:
+        severity = "orange";
+        break;
+      case 5:
+        severity = "red";
+        break;
+      default:
+        severity = "green";
+        break;
+    }
+
+    return `text-${severity}-800 bg-${severity}-200`;
+  }
 </script>
 
 <h2>Entries</h2>
-{#each entries as entry}
-  <p>
-    {entry.id}
-    {entry.severity}
-    {entry.notes}
-  </p>
-{/each}
+
+<ul class="flex flex-col bg-gray-100 divide-y divide-blue-400">
+  {#each entries as entry}
+    <li class="flex flex-row px-4 py-3">
+      <span
+        class="text-xs font-bold inline-block py-1 px-2 uppercase rounded-full {severityColor(
+          entry.severity
+        )} uppercase last:mr-0 mr-1 my-auto"
+      >
+        {entry.severity}
+      </span>
+
+      <p>
+        {entry.dateOfOccurrence}
+      </p>
+
+      <div>
+        {entry.medicineTaken}
+        <img src="images/medical-pill.svg" alt="" />
+      </div>
+
+      <div>
+        {#if entry?.labels?.length > 1}
+          {#each entry.labels as label}
+            <div class="rounded">{label}</div>
+          {/each}
+        {/if}
+      </div>
+    </li>
+  {/each}
+</ul>
