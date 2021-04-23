@@ -1,5 +1,8 @@
 <script lang="typescript">
   import { db } from "../db/Database.js";
+  import Modal from '../components/Modal.svelte';
+
+  let showModal = false;
 
   let severity = 1;
   let medicineTaken = false;
@@ -23,8 +26,12 @@
     };
 
     db.entries.add(entry);
+
+    showModal = true;
   }
 </script>
+
+<Modal bind:showModal></Modal>
 
 <h1>New Entry</h1>
 

@@ -1,14 +1,19 @@
 <script lang="ts">
   import Tailwind from "./Tailwind.svelte";
   import { currentPage } from "./stores/router";
-  import Dashboard from './components/Dashboard.svelte';
-  import Settings from './components/Settings.svelte';
-  import NewEntry from './components/NewEntry.svelte';
+  import Dashboard from './pages/Dashboard.svelte';
+  import Settings from './pages/Settings.svelte';
+  import NewEntry from './pages/NewEntry.svelte';
+  import ViewEntries from './pages/ViewEntries.svelte';
 
   const pages = [
     {
       name: "Settings",
       component: Settings
+    },
+    {
+      name: "View Entries",
+      component: ViewEntries
     },
     {
       name: "Dashboard",
@@ -28,7 +33,7 @@
   <!--Main Content-->
   <div class="w-full md:w-4/5 bg-gray-100">
     <div class="container bg-gray-100 pt-16 px-6 pb-16 h-full">
-      <svelte:component this={$currentPage.component}/>
+      <svelte:component this={$currentPage.component} />
     </div>
   </div>
 
