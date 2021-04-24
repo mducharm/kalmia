@@ -1,5 +1,6 @@
 <script lang="typescript">
   import { onMount } from "svelte";
+  import MedicinePill from './MedicinePill.svelte'
   import { db } from "../db/Database";
   import type { Entry, Label } from "src/types";
   import { getSeverityColor } from "../utils";
@@ -34,8 +35,7 @@
       </p>
 
       <div>
-        {entry.medicineTaken}
-        <img src="images/medical-pill.svg" alt="" />
+        <MedicinePill bind:active="{entry.medicineTaken}"></MedicinePill>
       </div>
 
       <div>
