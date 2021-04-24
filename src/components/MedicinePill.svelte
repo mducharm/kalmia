@@ -1,9 +1,10 @@
 <script>
     export let active = false;
+    let classToAdd;
 
-    let classToAdd = active 
+    $: classToAdd = active 
         ? "text-orange-600"
-        : "text-gray-600";
+        : "text-gray-400";
 
 </script>
 
