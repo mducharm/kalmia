@@ -1,6 +1,6 @@
 <script lang="typescript">
   import { onMount } from "svelte";
-  import MedicinePill from "../components/MedicinePill.svelte";
+  import MedicinePill from "components/MedicinePill.svelte";
   import { db } from "../db/Database";
   import type { Entry, Label } from "src/types";
   import { getSeverityColor } from "../utils";

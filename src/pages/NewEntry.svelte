@@ -1,7 +1,7 @@
 <script lang="typescript">
   import { db } from "../db/Database.js";
-  import Modal from "../components/Modal.svelte";
-  import MedicinePill from '../components/MedicinePill.svelte'
+  import Modal from "components/Modal.svelte";
+  import MedicinePill from 'components/MedicinePill.svelte'
   import { onMount } from "svelte";
   import type { Label } from "src/types.js";
   import { getSeverityColor } from "../utils.js";
