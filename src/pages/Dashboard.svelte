@@ -3,27 +3,29 @@
   import { db } from "../db/Database";
   import Pie from "svelte-chartjs/src/Pie.svelte";
 
-  let severityData: number[] = [];
+  let severityData: { [key: number]: number } = {};
 
   async function getSeverityCounts() {
-    let counts: { [key: number]: number } = {};
-    await db.entries.each((entry) => {
-      if (entry.severity in counts) {
-        counts[entry.severity] = counts[entry.severity] + 1;
-      } else {
-        counts[entry.severity] = 1;
-      }
-    });
-    return Object.values(counts);
+    let counts: { [key: number]: number } = {
+      1: 0,
+      2: 0,
+      3: 0,
+      4: 0,
+      5: 0,
+    };
+    await db.entries.each(
+      (entry) => (counts[entry.severity] = counts[entry.severity] + 1)
+    );
+    return counts;
   }
 
-  onMount(async() => severityData = await getSeverityCounts());
+  onMount(async () => (severityData = await getSeverityCounts()));
   let data: any;
   $: data = {
-    labels: ["1", "2", "3", "4", "5"],
+    labels: Object.keys(severityData),
     datasets: [
       {
-        data: severityData,
+        data: Object.values(severityData),
         backgroundColor: [
           "#6EE7B7",
           "#CBD5E1",
@@ -54,7 +56,5 @@
 </script>
 
 <div class="flex flex-col space-y-4">
-  {#if severityData.length > 0}
-    <Pie height={300} {data} {options} />
-  {/if}
+  <Pie height={300} {data} {options} />
 </div>
