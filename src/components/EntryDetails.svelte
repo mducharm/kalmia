@@ -36,5 +36,8 @@
   <p>Severity: {entry.severity}</p>
   <p>Medicine Taken: {entry.medicineTaken}</p>
   <p>Labels: {entry.labels}</p>
-  <p>Notes: {entry.notes}</p>
+  <h2>Notes: </h2>
+  <p>
+      {entry.notes}
+  </p>
 </div>
