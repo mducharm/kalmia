@@ -44,6 +44,7 @@
   "dependencies": {
     "dexie": "^3.0.3",
     "sirv-cli": "^1.0.10",
+    "svelte-chartjs": "^1.0.1",
     "tailwindcss": "^2.0.2"
   }
 }
