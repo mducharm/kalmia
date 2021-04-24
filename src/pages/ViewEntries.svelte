@@ -1,7 +1,9 @@
 <script lang="typescript">
   import { onMount } from "svelte";
   import MedicinePill from "components/MedicinePill.svelte";
+  import EntryDetails from "components/EntryDetails.svelte";
   import { db } from "../db/Database";
+  import { currentPage } from "../stores/router";
   import type { Entry, Label } from "src/types";
   import { getSeverityColor } from "../utils";
 
@@ -15,14 +17,24 @@
     let severity = getSeverityColor(num);
     return `text-${severity}-800 bg-${severity}-300`;
   }
+
+  function viewEntryDetails(entry: Entry) {
+    return () => {
+      currentPage.set({
+        name: "Entry Details",
+        component: EntryDetails,
+        props: {
+          entry,
+        },
+      });
+    };
+  }
 </script>
 
 <div>
-  <h2>View Entries</h2>
-
   <ul class="flex flex-col bg-gray-100 divide-y divide-blue-400">
     {#each entries as entry}
-      <li class="flex flex-row px-4 py-3">
+      <li class="flex flex-row items-center justify-between px-4 py-3">
         <span
           class="text-xs font-bold inline-block py-1 px-2 uppercase rounded-full {severityColor(
             entry.severity
@@ -46,6 +58,13 @@
             {/each}
           {/if}
         </div>
+
+        <button
+          on:click={viewEntryDetails(entry)}
+          class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+        >
+          View
+        </button>
       </li>
     {/each}
   </ul>
