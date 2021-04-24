@@ -25,8 +25,7 @@
   function exportToXlsx() {}
 
   function clearDatabase() {
-    db.entries.clear();
-    db.labels.clear();
+    db.delete().then(() => db.open());
 
     console.log("Database cleared.");
   }
