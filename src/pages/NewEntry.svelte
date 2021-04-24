@@ -46,7 +46,7 @@
 
 <Modal bind:showModal />
 
-<form class="mb-5 bg-white rounded pt-6 pb-8" on:submit|preventDefault>
+<form class="mb-5 rounded pt-6 pb-8" on:submit|preventDefault>
   <div class="my-3">
     <input type="checkbox" name="medicine-taken" bind:checked={medicineTaken} />
     <label for="medicine-taken">Medicine Taken? </label>
