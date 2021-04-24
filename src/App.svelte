@@ -9,19 +9,23 @@
   const pages = [
     {
       name: "Settings",
-      component: Settings
+      component: Settings,
+      props: {}
     },
     {
       name: "View Entries",
-      component: ViewEntries
+      component: ViewEntries,
+      props: {}
     },
     {
       name: "Dashboard",
-      component: Dashboard
+      component: Dashboard,
+      props: {}
     },
     {
       name: "New Entry",
-      component: NewEntry
+      component: NewEntry,
+      props: {}
     }];
 
     currentPage.set(pages[1]);
@@ -33,7 +37,7 @@
   <!--Main Content-->
   <div class="w-full md:w-4/5 bg-gray-100">
     <div class="container bg-gray-100 pt-16 px-6 pb-16 h-full">
-      <svelte:component this={$currentPage.component} />
+      <svelte:component this={$currentPage.component} {...$currentPage.props}/>
     </div>
   </div>
 
