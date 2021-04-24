@@ -55,7 +55,7 @@
   </div>
 
   <div
-    class="flex flex-col my-3 bg-{severityColor}-300 ring-2 ring-{severityColor}-400 md:mx-auto md:w-1/2"
+    class="flex flex-col my-3 md:mx-auto md:w-1/2"
   >
     <h2 class="mx-auto my-3 font-bold uppercase">Severity</h2>
     <h2 class="mx-auto text-5xl">
