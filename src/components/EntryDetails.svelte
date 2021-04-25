@@ -3,6 +3,8 @@
   import ViewEntries from "../pages/ViewEntries.svelte";
   import { currentPage } from "../stores/router";
   import { fly } from "svelte/transition";
+  import { db } from "../db/Database";
+  import ButtonWithConfirm from "components/ButtonWithConfirm.svelte";
   export let entry: Entry;
 
   function goBack() {
@@ -10,6 +12,12 @@
       name: "View Entries",
       component: ViewEntries,
     });
+  }
+  async function deleteEntry() {
+    if (entry.id) {
+      await db.entries.delete(entry.id);
+      goBack();
+    }
   }
 </script>
 
@@ -23,21 +31,21 @@
   <button
     class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
   >
-      Edit
+    Edit
   </button>
-  <button
-    class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded"
-  >
-      Delete
-  </button>
+  <ButtonWithConfirm
+    actionName="Delete"
+    contents="Are you sure you wish to delete this entry?"
+    action={deleteEntry}
+  />
 
   <h1>Entry #{entry.id}</h1>
 
   <p>Severity: {entry.severity}</p>
   <p>Medicine Taken: {entry.medicineTaken}</p>
   <p>Labels: {entry.labels}</p>
-  <h2>Notes: </h2>
+  <h2>Notes:</h2>
   <p>
-      {entry.notes}
+    {entry.notes}
   </p>
 </div>
