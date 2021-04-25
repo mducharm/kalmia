@@ -37,18 +37,18 @@
 
     <button
       on:click={() => currentPage.set({ name: "About", component: About })}
-      class="w-full my-4 bg-gray-100 hover:bg-gray-200 font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded"
+      class="w-full my-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
     >
       About
     </button>
 
-  <h1 class="font-semibold">Labels</h1>
+  <h1 class="font-semibold">Manage Labels</h1>
   <p class="mt-2 text-gray-600">Add custom labels to the form here. </p>
 
   <input type="text" bind:value={newLabel} class="w-full my-2 py-2 px-2"/>
   <button
     on:click={addNewLabel}
-    class="w-full bg-gray-100 hover:bg-gray-200 font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded"
+    class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
     >Add</button
   >
   <div class="flex flex-wrap justify-center my-4">
@@ -85,7 +85,7 @@
 
 <button
   on:click={exportToXlsx}
-  class="w-full my-4 bg-gray-100 hover:bg-gray-200 font-bold py-2 px-4 border-b-4 border-gray-700 hover:border-gray-500 rounded"
+  class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
   >Export to Excel</button
 >
 
