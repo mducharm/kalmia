@@ -34,18 +34,22 @@
 </script>
 
 <div class="container mx-auto my-8">
-
-    <button
-      on:click={() => currentPage.set({ name: "About", component: About })}
-      class="w-full my-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-    >
-      About
-    </button>
+  <button
+    on:click={() => currentPage.set({ name: "About", component: About })}
+    class="w-full my-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+  >
+    About
+  </button>
 
   <h1 class="font-semibold">Manage Labels</h1>
-  <p class="mt-2 text-gray-600">Add custom labels to the form here. </p>
+  <p class="mt-2 text-gray-600">Add custom labels to the form here.</p>
 
-  <input type="text" bind:value={newLabel} class="w-full my-2 py-2 px-2"/>
+  <input
+    type="text"
+    on:keypress={(e) => (e.code === "Enter" ? addNewLabel() : "")}
+    bind:value={newLabel}
+    class="w-full my-2 py-2 px-2"
+  />
   <button
     on:click={addNewLabel}
     class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -56,7 +60,9 @@
       <div
         class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-indigo-100 bg-indigo-700 border border-indigo-700 "
       >
-        <div class="text-xs font-normal leading-none max-w-full flex-initial">
+        <div
+          class="text-md px-2 py-2 font-normal leading-none max-w-full flex-initial"
+        >
           {label.name}
         </div>
         <div class="flex flex-auto flex-row-reverse">
@@ -90,8 +96,8 @@
 >
 
 <ButtonWithConfirm
-    actionName="Reset"
-    contents="Are you sure you wish to reset the app? This will delete all data and cannot be undone. If you wish to keep any existing data, export first."
-    class="w-full"
-    action="{clearDatabase}"
-></ButtonWithConfirm>
+  actionName="Reset"
+  contents="Are you sure you wish to reset the app? This will delete all data and cannot be undone. If you wish to keep any existing data, export first."
+  class="w-full"
+  action={clearDatabase}
+/>
