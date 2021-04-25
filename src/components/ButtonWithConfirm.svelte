@@ -13,7 +13,7 @@
 
 <button
   on:click={() => (showModal = true)}
-  class="w-full bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
+  class="bg-red-500 hover:bg-red-700 text-white font-bold py-2 px-4 rounded {$$props.class}"
 >
   {actionName}
 </button>

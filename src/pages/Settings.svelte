@@ -91,5 +91,6 @@
 <ButtonWithConfirm
     actionName="Reset"
     contents="Are you sure you wish to reset the app? This will delete all data and cannot be undone. If you wish to keep any existing data, export first."
+    class="w-full"
     action="{clearDatabase}"
 ></ButtonWithConfirm>
