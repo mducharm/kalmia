@@ -14,6 +14,7 @@
   async function addNewLabel() {
     db.labels.add({ name: newLabel });
     labels = await db.labels.toArray();
+    newLabel = "";
   }
 
   function removeLabel(label: Label) {
