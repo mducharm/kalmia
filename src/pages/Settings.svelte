@@ -3,6 +3,7 @@
   import type { Label } from "src/types";
   import { currentPage } from "../stores/router";
   import About from "./About.svelte";
+  import ButtonWithConfirm from "components/ButtonWithConfirm.svelte";
   import { onMount } from "svelte";
 
   let labels: Label[] = [];
@@ -87,8 +88,8 @@
   >Export to Excel</button
 >
 
-<button
-  on:click={clearDatabase}
-  class="w-full bg-red-500 hover:bg-red-400 text-white font-bold py-2 px-4 border-b-4 border-red-700 hover:border-red-500 rounded"
-  >Clear Data</button
->
+<ButtonWithConfirm
+    actionName="Reset"
+    contents="Are you sure you wish to reset the app? This will delete all data and cannot be undone. If you wish to keep any existing data, export first."
+    action="{clearDatabase}"
+></ButtonWithConfirm>
