@@ -28,7 +28,7 @@
 
 <p>
   Named after the <a 
-  href="https://en.wikipedia.org/wiki/Kalmia_latifoli"
+  href="https://en.wikipedia.org/wiki/Kalmia_latifolia"
   class="underline"
   ><i>Kalmia latifolia</i></a>, a symbol of perseverance. Also known as spoonwood, alluding to the concept of <a href="https://en.wikipedia.org/wiki/Spoon_theory" class="underline">spoon theory</a>.
 </p>
