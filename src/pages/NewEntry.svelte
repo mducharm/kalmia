@@ -1,12 +1,10 @@
 <script lang="typescript">
   import { db } from "../db/Database.js";
-  import Modal from "components/Modal.svelte";
+  import ButtonWithToaster from "components/ButtonWithToaster.svelte";
   import MedicinePill from 'components/MedicinePill.svelte'
   import { onMount } from "svelte";
   import type { Label } from "src/types.js";
   import { getSeverityColor } from "../utils.js";
-
-  let showModal = false;
 
   let severity = 1;
   let severityColor: string;
@@ -35,16 +33,12 @@
     };
 
     db.entries.add(entry);
-
-    showModal = true;
   }
 
   onMount(async () => {
     allLabels = await db.labels.toArray();
   });
 </script>
-
-<Modal bind:showModal />
 
 <form class="mb-5 rounded pt-6 pb-8" on:submit|preventDefault>
   <div class="my-3">
@@ -100,11 +94,8 @@
   </div>
 
   <div class="my-3">
-    <button
-      on:click={saveForm}
-      class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded w-full"
-    >
-      Submit
-    </button>
+    <ButtonWithToaster
+      action={saveForm} 
+    ></ButtonWithToaster>
   </div>
 </form>
