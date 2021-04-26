@@ -42,12 +42,12 @@
       >
 
       <div
-        class="inline-block align-bottom rounded-lg text-left overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
+        class="inline-block align-bottom rounded-lg overflow-hidden transform transition-all sm:my-8 sm:align-middle sm:max-w-lg sm:w-full"
       >
         <div
-          class="space-x-2 bg-green-50 p-4 rounded flex items-center text-green-600 my-4 shadow-lg mx-auto max-w-2xl w-full"
+          class="space-x-2 bg-emerald-100 p-4 rounded flex flex-row items-center text-green-600 my-4 mx-auto max-w-2xl border-b-4 border-emerald-600"
         >
-          <div class="">
+          <div class="mx-auto">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="fill-current w-5 pt-1"
