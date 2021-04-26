@@ -5,11 +5,8 @@
   import PillList from "components/PillList.svelte";
   import MedicinePill from "components/MedicinePill.svelte";
   import { onMount } from "svelte";
-  import { getSeverityColor } from "../utils.js";
 
   let severity = 1;
-  let severityColor: string;
-  $: severityColor = getSeverityColor(severity);
 
   let medicineTaken = false;
   let notes = "";

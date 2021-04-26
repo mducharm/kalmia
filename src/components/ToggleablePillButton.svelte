@@ -1,11 +1,10 @@
 <script lang="ts">
   export let checked = false;
   export let text: string;
-  export let toggledColor = "blue";
 
   let colors: string;
   $: colors = checked
-    ? `bg-${toggledColor}-500 hover:bg-${toggledColor}-700 text-white`
+    ? `bg-blue-500 hover:bg-blue-700 text-white`
     : "bg-gray-300 hover:bg-gray-400 text-gray-700"
 </script>
 
