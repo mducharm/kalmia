@@ -1,9 +1,9 @@
 <script lang="typescript">
   import { db } from "../db/Database.js";
   import ButtonWithToaster from "components/ButtonWithToaster.svelte";
-  import MedicinePill from 'components/MedicinePill.svelte'
+  import PillList from "components/PillList.svelte";
+  import MedicinePill from "components/MedicinePill.svelte";
   import { onMount } from "svelte";
-  import type { Label } from "src/types.js";
   import { getSeverityColor } from "../utils.js";
 
   let severity = 1;
@@ -12,8 +12,9 @@
 
   let medicineTaken = false;
   let notes = "";
-  let allLabels: Label[] = [];
+  let allLabels: {text: string, selected: boolean}[] = [];
   let labels: string[] = [];
+  $: labels = allLabels.filter(l => l.selected).map(l => l.text);
 
   let now = new Date();
 
@@ -36,7 +37,11 @@
   }
 
   onMount(async () => {
-    allLabels = await db.labels.toArray();
+    let labelsFromDB = await db.labels.toArray();
+    allLabels = labelsFromDB.map(l => ({
+      text: l.name,
+      selected: false
+    }))
   });
 </script>
 
@@ -44,7 +49,7 @@
   <div class="my-3">
     <input type="checkbox" name="medicine-taken" bind:checked={medicineTaken} />
     <label for="medicine-taken">Medicine Taken? </label>
-    <MedicinePill bind:active="{medicineTaken}"></MedicinePill>
+    <MedicinePill bind:active={medicineTaken} />
   </div>
 
   <div class="flex flex-col my-3 md:mx-auto md:w-1/2">
@@ -69,16 +74,13 @@
     />
   </div>
 
-  <div class="flex flex-col my-3">
+  <div class="flex flex-row flex-wrap my-3">
     <h1>Labels</h1>
-    {#each allLabels as label}
-      <div
-        class="mx-auto bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full"
-      >
-        <input type="checkbox" />
-        <label for="date-of-occurrence">{label.name}</label>
-      </div>
-    {/each}
+
+    <PillList
+      bind:items={allLabels}
+    />
+
   </div>
 
   <div class="my-3">
@@ -94,8 +96,6 @@
   </div>
 
   <div class="my-3">
-    <ButtonWithToaster
-      action={saveForm} 
-    ></ButtonWithToaster>
+    <ButtonWithToaster action={saveForm} />
   </div>
 </form>
