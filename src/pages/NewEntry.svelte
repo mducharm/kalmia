@@ -13,9 +13,9 @@
 
   let medicineTaken = false;
   let notes = "";
-  let allLabels: {text: string, selected: boolean}[] = [];
+  let allLabels: { text: string; selected: boolean }[] = [];
   let labels: string[] = [];
-  $: labels = allLabels.filter(l => l.selected).map(l => l.text);
+  $: labels = allLabels.filter((l) => l.selected).map((l) => l.text);
 
   let now = new Date();
 
@@ -35,20 +35,37 @@
     };
 
     db.entries.add(entry);
+
+    severity = 1;
+    medicineTaken = false;
+    labels = [];
+    notes = "";
+    dateOfOccurrence = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
+      .toISOString()
+      .split("T")[0];
+
+    allLabels = allLabels.map((l) => ({
+      text: l.text,
+      selected: false,
+    }));
   }
 
   onMount(async () => {
     let labelsFromDB = await db.labels.toArray();
-    allLabels = labelsFromDB.map(l => ({
+    allLabels = labelsFromDB.map((l) => ({
       text: l.name,
-      selected: false
-    }))
+      selected: false,
+    }));
   });
 </script>
 
 <form class="mb-5 rounded pt-6 pb-8" on:submit|preventDefault>
   <div class="my-3">
-    <ToggleablePillButton bind:checked={medicineTaken} text="Medicine Taken?" toggledColor="teal">
+    <ToggleablePillButton
+      bind:checked={medicineTaken}
+      text="Medicine Taken?"
+      toggledColor="teal"
+    >
       <MedicinePill bind:active={medicineTaken} />
     </ToggleablePillButton>
   </div>
@@ -78,10 +95,7 @@
   <div class="flex flex-row flex-wrap my-3">
     <h1>Labels</h1>
 
-    <PillList
-      bind:items={allLabels}
-    />
-
+    <PillList bind:items={allLabels} />
   </div>
 
   <div class="my-3">
