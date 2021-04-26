@@ -61,7 +61,6 @@
     <ToggleablePillButton
       bind:checked={medicineTaken}
       text="Medicine Taken?"
-      toggledColor="teal"
     >
       <MedicinePill bind:active={medicineTaken} />
     </ToggleablePillButton>
