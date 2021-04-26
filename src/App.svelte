@@ -5,6 +5,7 @@
   import Settings from './pages/Settings.svelte';
   import NewEntry from './pages/NewEntry.svelte';
   import ViewEntries from './pages/ViewEntries.svelte';
+  import About from "./pages/About.svelte";
 
   const pages = [
     {
@@ -28,7 +29,13 @@
       props: {}
     }];
 
-    currentPage.set(pages[1]);
+    let initialPage = {
+      name: "About",
+      component: About,
+      props: {}
+    }
+
+    currentPage.set(initialPage);
 </script>
 
 <Tailwind />
