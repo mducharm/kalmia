@@ -1,5 +1,5 @@
 <div
-  class="mx-auto rounded-full h-24 w-24 flex items-center justify-center bg-teal-700"
+  class="mx-auto md:mx-0 rounded-full h-24 w-24 flex items-center justify-center bg-teal-700"
 >
   <svg
     id="Capa_1"
