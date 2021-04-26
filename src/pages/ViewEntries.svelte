@@ -52,7 +52,7 @@
         </div>
 
         <div>
-          {#if entry?.labels?.length > 1}
+          {#if entry?.labels?.length > 0}
             {#each entry.labels as label}
               <div class="rounded">{label}</div>
             {/each}
