@@ -1,6 +1,7 @@
 <script lang="typescript">
   import { db } from "../db/Database.js";
   import ButtonWithToaster from "components/ButtonWithToaster.svelte";
+  import ToggleablePillButton from "components/ToggleablePillButton.svelte";
   import PillList from "components/PillList.svelte";
   import MedicinePill from "components/MedicinePill.svelte";
   import { onMount } from "svelte";
@@ -47,9 +48,9 @@
 
 <form class="mb-5 rounded pt-6 pb-8" on:submit|preventDefault>
   <div class="my-3">
-    <input type="checkbox" name="medicine-taken" bind:checked={medicineTaken} />
-    <label for="medicine-taken">Medicine Taken? </label>
-    <MedicinePill bind:active={medicineTaken} />
+    <ToggleablePillButton bind:checked={medicineTaken} text="Medicine Taken?" toggledColor="teal">
+      <MedicinePill bind:active={medicineTaken} />
+    </ToggleablePillButton>
   </div>
 
   <div class="flex flex-col my-3 md:mx-auto md:w-1/2">

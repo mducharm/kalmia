@@ -3,7 +3,7 @@
     let classToAdd;
 
     $: classToAdd = active 
-        ? "text-orange-600"
+        ? "text-orange-500"
         : "text-gray-400";
 
 </script>

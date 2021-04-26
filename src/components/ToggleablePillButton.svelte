@@ -11,8 +11,9 @@
 
 <div
     on:click="{() => checked = !checked}"
-    class="{colors} font-bold py-2 px-2 rounded-full flex flex-row"
+    class="{colors} font-bold py-3 px-6 rounded-full flex flex-row"
 >
-  <input type="checkbox" bind:checked={checked} class="mx-3 px-3 py-3 h-5 w-5 "/>
-  <label for="{text}" class="px-2">{text}</label>
+  <input type="checkbox" bind:checked={checked} class="h-5 w-5 "/>
+  <label for="{text}" class="pl-2">{text}</label>
+  <slot></slot>
 </div>
