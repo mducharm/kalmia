@@ -47,7 +47,7 @@
     {#each entries as entry}
       <li class="flex flex-row items-center justify-between px-4 py-3">
         <span
-          class="text-xs font-bold inline-block py-1 px-2 uppercase rounded-full {severityColor(
+          class="text-lg font-bold inline-block py-1 px-3 uppercase rounded {severityColor(
             entry.severity
           )} uppercase last:mr-0 mr-1 my-auto"
         >
