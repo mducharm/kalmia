@@ -44,6 +44,7 @@
   "dependencies": {
     "@tailwindcss/forms": "^0.3.2",
     "dexie": "^3.0.3",
+    "moment": "^2.29.1",
     "sirv-cli": "^1.0.10",
     "svelte-chartjs": "^1.0.1",
     "tailwindcss": "^2.0.2"
