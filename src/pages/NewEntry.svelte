@@ -1,8 +1,8 @@
 <script lang="typescript">
   import { db } from "../db/Database.js";
   import ButtonWithToaster from "components/ButtonWithToaster.svelte";
-  import ToggleablePillButton from "components/ToggleablePillButton.svelte";
-  import PillList from "components/PillList.svelte";
+  import ToggleButton from "components/ToggleButton.svelte";
+  import ToggleButtonList from "components/ToggleButtonList.svelte";
   import MedicinePill from "components/MedicinePill.svelte";
   import { onMount } from "svelte";
 
@@ -56,23 +56,26 @@
   });
 </script>
 
-<form class="mb-5 rounded pt-6 pb-8" on:submit|preventDefault>
-  <div class="my-3">
-    <ToggleablePillButton
-      bind:checked={medicineTaken}
-      text="Medicine Taken?"
-    >
-      <MedicinePill bind:active={medicineTaken} />
-    </ToggleablePillButton>
+<form
+  class="mb-5 rounded pb-8 divide-y-2 divide-teal-900 divide-opacity-20"
+  on:submit|preventDefault
+>
+  <div class="py-5">
+    <p class="text-sm text-gray-600">
+      Not feeling well? Record details by submitting a new entry below.
+    </p>
   </div>
 
-  <div class="flex flex-col my-3 md:mx-auto md:w-1/2">
-    <h2 class="mx-auto my-3 font-bold uppercase">Severity</h2>
+  <div class="flex flex-col my-4 md:mx-auto md:w-1/2 py-6">
+    <h2 class="my-3 font-bold">Severity</h2>
+    <p class="text-sm text-gray-600">
+      Estimate how bad you feel, from best (1) to worst (5).
+    </p>
     <h2 class="mx-auto text-4xl">
       {severity}
     </h2>
     <input
-      class="mx-auto my-3 w-full"
+      class="mx-auto mt-3 w-full"
       type="range"
       min="1"
       max="5"
@@ -80,7 +83,17 @@
     />
   </div>
 
-  <div class="my-3">
+  <div class="py-6">
+    <p class="text-sm text-gray-600 pb-4">
+      Did you miss a dose of medicine leading up to your current symptoms?
+    </p>
+    <ToggleButton bind:checked={medicineTaken} text="Medicine Taken" />
+  </div>
+
+  <div class="py-6">
+    <p class="text-sm text-gray-600 pb-4">
+      When did you start feeling your current symptoms?
+    </p>
     <input
       type="date"
       bind:value={dateOfOccurrence}
@@ -88,13 +101,15 @@
     />
   </div>
 
-  <div class="flex flex-row flex-wrap my-3">
-    <h1>Labels</h1>
+  <div class="flex flex-col my-3 py-6">
+    <h1 class="pb-4">Labels</h1>
 
-    <PillList bind:items={allLabels} />
+    {#each allLabels as label}
+      <ToggleButton text={label.text} bind:checked={label.selected} />
+    {/each}
   </div>
 
-  <div class="my-3">
+  <div class="my-3 py-6">
     <h2 class="mx-auto pb-4">Notes</h2>
     <textarea
       bind:value={notes}
@@ -106,7 +121,7 @@
     />
   </div>
 
-  <div class="my-3">
+  <div class="my-8">
     <ButtonWithToaster action={saveForm} />
   </div>
 </form>
