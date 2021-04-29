@@ -2,9 +2,9 @@
   import { db } from "../db/Database.js";
   import ButtonWithToaster from "components/ButtonWithToaster.svelte";
   import ToggleButton from "components/ToggleButton.svelte";
-  import ToggleButtonList from "components/ToggleButtonList.svelte";
   import MedicinePill from "components/MedicinePill.svelte";
   import { onMount } from "svelte";
+  import { getSeverityColor } from "../utils";
 
   let severity = 1;
 
@@ -21,6 +21,9 @@
   )
     .toISOString()
     .split("T")[0];
+
+  let severityColor: string;
+  $: severityColor = getSeverityColor(severity);
 
   function saveForm() {
     let entry = {
@@ -69,13 +72,13 @@
   <div class="flex flex-col my-4 md:mx-auto md:w-1/2 py-6">
     <h2 class="my-3 font-bold">Severity</h2>
     <p class="text-sm text-gray-600">
-      Estimate how bad you feel, from best (1) to worst (5).
+      Estimate how bad you feel from best (1) to worst (5).
     </p>
-    <h2 class="mx-auto text-4xl">
+    <h2 class="mx-auto text-4xl mt-2">
       {severity}
     </h2>
     <input
-      class="mx-auto mt-3 w-full"
+      class="mx-auto mt-3 w-full appearance-none rounded-full {severityColor}"
       type="range"
       min="1"
       max="5"

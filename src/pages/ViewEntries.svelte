@@ -5,29 +5,13 @@
   import { db } from "../db/Database";
   import { currentPage } from "../stores/router";
   import type { Entry, Label } from "src/types";
+  import { getSeverityColor } from "../utils";
 
   let entries: Entry[] = [];
 
   onMount(async () => {
     entries = await db.entries.toArray();
   });
-
-  function severityColor(num: number) {
-    switch (num) {
-      case 1:
-        return "text-emerald-800 bg-emerald-300";
-      case 2:
-        return "text-bluegray-800 bg-bluegray-300";
-      case 3:
-        return "text-amber-800 bg-amber-300";
-      case 4:
-        return "text-orange-800 bg-orange-300";
-      case 5:
-        return "text-red-800 bg-red-300";
-      default:
-        return "text-green-800 bg-green-300";
-    }
-  }
 
   function viewEntryDetails(entry: Entry) {
     return () => {
@@ -47,7 +31,7 @@
     {#each entries as entry}
       <li class="flex flex-row items-center justify-between px-4 py-3">
         <span
-          class="text-lg font-bold inline-block py-1 px-3 uppercase rounded {severityColor(
+          class="text-lg font-bold inline-block py-1 px-3 uppercase rounded {getSeverityColor(
             entry.severity
           )} uppercase last:mr-0 mr-1 my-auto"
         >
