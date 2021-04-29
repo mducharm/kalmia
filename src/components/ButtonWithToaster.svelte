@@ -3,8 +3,7 @@
   export let action: () => void;
 
   let showModal = false;
-  $: if (showModal)
-    setTimeout(() => (showModal = false), 2000);
+  $: if (showModal) setTimeout(() => (showModal = false), 2000);
 
   let handleSuccess = () => {
     action();
@@ -14,7 +13,7 @@
 
 <button
   on:click={handleSuccess}
-  class="bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded w-full"
+  class="w-full my-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
 >
   Submit
 </button>
@@ -36,9 +35,8 @@
       />
 
       <!-- This element is to trick the browser into centering the modal contents. -->
-      <span
-        class="hidden sm:inline-block sm:align-middle"
-        aria-hidden="true">&#8203;</span
+      <span class="hidden sm:inline-block sm:align-middle" aria-hidden="true"
+        >&#8203;</span
       >
 
       <div
