@@ -5,6 +5,9 @@
   import MedicinePill from "components/MedicinePill.svelte";
   import { onMount } from "svelte";
   import { getSeverityColor } from "../utils";
+  import dayjs from "dayjs";
+  import customParseFormat from "dayjs/plugin/customParseFormat";
+  dayjs.extend(customParseFormat);
 
   let severity = 1;
 
@@ -14,13 +17,8 @@
   let labels: string[] = [];
   $: labels = allLabels.filter((l) => l.selected).map((l) => l.text);
 
-  let now = new Date();
-
-  $: dateOfOccurrence = new Date(
-    now.getTime() - now.getTimezoneOffset() * 60000
-  )
-    .toISOString()
-    .split("T")[0];
+  let dateInputValue = dayjs().format("YYYY-MM-DD");
+  $: dateOfOccurrence = dayjs(dateInputValue, "YYYY-MM-DD").unix();
 
   let severityColor: string;
   $: severityColor = getSeverityColor(severity);
@@ -40,9 +38,7 @@
     medicineTaken = false;
     labels = [];
     notes = "";
-    dateOfOccurrence = new Date(now.getTime() - now.getTimezoneOffset() * 60000)
-      .toISOString()
-      .split("T")[0];
+    dateInputValue = dayjs().format("YYYY-MM-DD");
 
     allLabels = allLabels.map((l) => ({
       text: l.text,
@@ -99,7 +95,7 @@
     </p>
     <input
       type="date"
-      bind:value={dateOfOccurrence}
+      bind:value={dateInputValue}
       class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-md border-0 shadow outline-none focus:outline-none focus:ring w-full"
     />
   </div>

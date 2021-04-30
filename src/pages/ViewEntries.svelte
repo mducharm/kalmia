@@ -6,6 +6,9 @@
   import { currentPage } from "../stores/router";
   import type { Entry, Label } from "src/types";
   import { getSeverityColor } from "../utils";
+  import dayjs from "dayjs";
+  import customParseFormat from 'dayjs/plugin/customParseFormat'
+  dayjs.extend(customParseFormat);
 
   let entries: Entry[] = [];
 
@@ -39,7 +42,7 @@
         </span>
 
         <p>
-          {entry.dateOfOccurrence}
+          {dayjs.unix(entry.dateOfOccurrence).format("YYYY-MM-DD")}
         </p>
 
         <div>
