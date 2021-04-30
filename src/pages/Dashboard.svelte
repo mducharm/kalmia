@@ -56,5 +56,11 @@
 </script>
 
 <div class="flex flex-col space-y-4">
-  <Pie height={300} {data} {options} />
+  {#if Object.values(severityData).every((x) => x === 0)}
+    <p class="text-sm text-gray-600 pb-4">
+      Once you've added some entries, your data will be visualized here.
+    </p>
+  {:else}
+    <Pie height={300} {data} {options} />
+  {/if}
 </div>
