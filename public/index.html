@@ -8,14 +8,26 @@
   <title>Kalmia</title>
 
   <meta name="title" content="Svelte/Typescript/Tailwind/Snowpack">
-  <meta name="description" content="Svelte/Typescript/Tailwind/Snowpack template">
-
+  <meta name="description" content="Kalmia">
+  <meta name="theme-color" content="#134E4A"/>
+  
+  <link rel="manifest" href="/site.webmanifest">
   <link rel='icon' type='image/png' href='/favicon.ico'>
 </head>
 
 <body class="bg-gray-100 font-sans leading-normal tracking-normal">
 
   <script defer type="module" src="/_dist_/main.js"></script>
+  <script>
+    window.onload = () => {
+      'use strict';
+
+      if ('serviceWorker' in navigator) {
+        navigator.serviceWorker
+          .register('./sw.js');
+      }
+    }
+  </script>
 </body>
 
 </html>
