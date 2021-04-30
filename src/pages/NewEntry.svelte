@@ -106,7 +106,7 @@
 
     {#if allLabels.length === 0}
       <p class="text-sm text-gray-600 pb-4">
-        You can add custom labels under <b on:click="{goToSettings}">Settings</b>.
+        You can add custom labels under <b on:click="{goToSettings}" class="underline cursor-pointer">Settings</b>.
       </p>
     {/if}
 
