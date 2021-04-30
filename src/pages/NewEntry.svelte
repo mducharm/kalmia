@@ -5,6 +5,7 @@
   import MedicinePill from "components/MedicinePill.svelte";
   import { onMount } from "svelte";
   import { getSeverityColor } from "../utils";
+  import { goToSettings } from "../stores/router";
   import dayjs from "dayjs";
   import customParseFormat from "dayjs/plugin/customParseFormat";
   dayjs.extend(customParseFormat);
@@ -102,6 +103,12 @@
 
   <div class="flex flex-col my-3 py-6">
     <h1 class="pb-4">Labels</h1>
+
+    {#if allLabels.length === 0}
+      <p class="text-sm text-gray-600 pb-4">
+        You can add custom labels under <b on:click="{goToSettings}">Settings</b>.
+      </p>
+    {/if}
 
     {#each allLabels as label}
       <ToggleButton text={label.text} bind:checked={label.selected} />
