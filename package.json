@@ -10,7 +10,9 @@
     "check": "svelte-check --diagnostic-sources \"js,svelte\"",
     "check:watch": "svelte-check --watch --diagnostic-sources \"js,svelte\"",
     "build": "npm test && npm run check &&snowpack build",
-    "serve": "sirv build --maxage 36000"
+    "serve": "sirv build --maxage 36000",
+    "pwa": "workbox generateSW workbox-config.js",
+    "pwa:init": "workbox wizard"
   },
   "keywords": [
     "svelte",
@@ -39,7 +41,8 @@
     "svelte-jester": "^1.3.0",
     "svelte-preprocess": "^4.6.1",
     "ts-jest": "^26.4.4",
-    "typescript": "^4.1.3"
+    "typescript": "^4.1.3",
+    "workbox-cli": "latest"
   },
   "dependencies": {
     "@tailwindcss/forms": "^0.3.2",
