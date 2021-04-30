@@ -56,6 +56,11 @@
     >Add</button
   >
   <div class="flex flex-wrap justify-center my-4">
+    {#if labels.length === 0}
+      <p class="text-sm text-gray-600 pb-4">
+        No labels added yet.
+        </p>
+    {/if}
     {#each labels as label}
       <div
         class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-full text-indigo-100 bg-indigo-700 border border-indigo-700 "
