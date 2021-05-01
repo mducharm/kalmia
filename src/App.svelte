@@ -6,6 +6,30 @@
   import NewEntry from './pages/NewEntry.svelte';
   import ViewEntries from './pages/ViewEntries.svelte';
   import About from "./pages/About.svelte";
+  import { Workbox, messageSW } from 'workbox-window';
+  import { onMount } from "svelte";
+
+  const workbox = new Workbox(import.meta.env.SNOWPACK_PUBLIC_SERVICE_WORKER);
+  const showSkipWaitingPrompt = () => {
+    // setUpdateNotificationOpen(true);
+    console.log("Waiting...");
+  };
+
+  const setRegistration = (r: ServiceWorkerRegistration) => {
+    // setUpdateNotificationOpen(true);
+    console.log(r);
+  };
+
+  onMount(() => {
+    if ('serviceWorker' in navigator) {
+      // Open update prompt because there is an update waiting
+      workbox.addEventListener('waiting', showSkipWaitingPrompt);
+      workbox.register().then((r) => {
+        if (r !== undefined)
+          setRegistration(r);
+      });
+    }
+  })
 
   const pages = [
     {
