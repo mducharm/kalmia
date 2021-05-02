@@ -18,7 +18,7 @@
       .toArray();
   }
 
-  let fromDate = dayjs().format("YYYY-MM-DD");
+  let fromDate = dayjs().subtract(1, "year").format("YYYY-MM-DD");
   let toDate = dayjs().format("YYYY-MM-DD");
   $: from = dayjs(fromDate, "YYYY-MM-DD").unix();
   $: to = dayjs(toDate, "YYYY-MM-DD").unix();
