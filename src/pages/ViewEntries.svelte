@@ -64,42 +64,62 @@
         You haven't added any entries yet.
       </p>
     {:else}
-      <ul class="flex flex-col bg-gray-100 divide-y divide-blue-400">
-        {#each entries as entry}
-          <li class="flex flex-row items-center justify-between px-4 py-3">
-            <span
-              class="text-lg font-bold inline-block py-1 px-3 uppercase rounded {getSeverityColor(
-                entry.severity
-              )} uppercase last:mr-0 mr-1 my-auto"
-            >
-              {entry.severity}
-            </span>
-
-            <p>
-              {dayjs.unix(entry.dateOfOccurrence).format("YYYY-MM-DD")}
-            </p>
-
-            <div>
-              <MedicinePill bind:active={entry.medicineTaken} />
+      {#each entries as entry}
+        <div class="relative bg-white py-6 px-6 rounded-3xl my-4 shadow-xl">
+          <div
+            class="flex items-center justify-center rounded-full py-2 px-4 shadow-xl uppercase font-bold text-lg {getSeverityColor(
+              entry.severity
+            )}"
+          >
+            {entry.severity}
+          </div>
+          <div class="mt-8">
+            <!-- <p class="text-xl font-semibold my-2">Web Design</p> -->
+            <div class="flex justify-between">
+              <div class="flex space-x-2 text-gray-400 text-sm">
+                <MedicinePill bind:active={entry.medicineTaken} />
+                <p>Medicine Taken</p>
+              </div>
+              <div class="flex space-x-2 text-gray-400 text-sm">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-5 w-5"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    stroke-width="2"
+                    d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                  />
+                </svg>
+                <p>
+                  {dayjs.unix(entry.dateOfOccurrence).format("MMMM D, YYYY")}
+                </p>
+              </div>
             </div>
-
-            <div>
-              {#if entry?.labels?.length > 0}
-                {#each entry.labels as label}
-                  <div class="rounded">{label}</div>
-                {/each}
-              {/if}
+            <div class="flex space-x-2 text-gray-400 text-sm my-3">
+              <div>
+                {#if entry?.labels?.length > 0}
+                  {#each entry.labels as label}
+                    <div class="rounded">{label}</div>
+                  {/each}
+                {/if}
+              </div>
             </div>
-
+            <div class="border-t-2 " />
+            <!-- svg  -->
             <button
               on:click={viewEntryDetails(entry)}
-              class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+              class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow w-full"
             >
               View
             </button>
-          </li>
-        {/each}
-      </ul>
+          </div>
+        </div>
+      {/each}
     {/if}
   </div>
 {/await}
