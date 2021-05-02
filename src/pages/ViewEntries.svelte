@@ -100,14 +100,12 @@
                 </p>
               </div>
             </div>
-            <div class="flex space-x-2 text-gray-400 text-sm my-3">
-              <div>
+            <div class="flex flex-row flex-wrap text-gray-400 text-sm my-3">
                 {#if entry?.labels?.length > 0}
                   {#each entry.labels as label}
-                    <div class="rounded">{label}</div>
+                    <div class="border rounded px-3 py-2 mr-2 mb-2">{label}</div>
                   {/each}
                 {/if}
-              </div>
             </div>
             <div class="border-t-2 " />
             <!-- svg  -->
