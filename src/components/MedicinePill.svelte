@@ -9,7 +9,7 @@
 </script>
 
 <svg
-  class="fill-current {classToAdd}"
+  class="fill-current {classToAdd} h-5 w-5"
   version="1.1"
   id="Capa_1"
   xmlns="http://www.w3.org/2000/svg"
