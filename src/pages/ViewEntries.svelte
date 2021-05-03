@@ -65,7 +65,9 @@
       </p>
     {:else}
       {#each entries as entry}
-        <div class="relative bg-white py-6 px-6 rounded-3xl my-4 shadow-xl">
+        <div class="relative bg-white py-6 px-6 rounded-3xl my-4 shadow-xl cursor-pointer" 
+          on:click={viewEntryDetails(entry)}
+        >
           <div
             class="flex items-center justify-center rounded-full py-2 px-4 shadow-xl uppercase font-bold text-lg {getSeverityColor(
               entry.severity
@@ -107,14 +109,6 @@
                   {/each}
                 {/if}
             </div>
-            <div class="border-t-2 " />
-            <!-- svg  -->
-            <button
-              on:click={viewEntryDetails(entry)}
-              class="bg-white hover:bg-gray-100 text-gray-800 font-semibold py-2 px-4 border border-gray-400 rounded shadow w-full"
-            >
-              View
-            </button>
           </div>
         </div>
       {/each}
