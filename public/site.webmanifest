@@ -1,7 +1,7 @@
 {
     "name": "Kalmia",
     "short_name": "Kalmia",
-    "start_url": "/index.html",
+    "start_url": "/",
     "icons": [
         {
             "src": "/android-chrome-192x192.png",
