@@ -2,6 +2,9 @@
   import { onMount } from "svelte";
   import { db } from "../db/Database";
   import Pie from "svelte-chartjs/src/Pie.svelte";
+  import dayjs from "dayjs";
+  import customParseFormat from "dayjs/plugin/customParseFormat";
+  dayjs.extend(customParseFormat);
 
   let severityData: { [key: number]: number } = {};
 
@@ -54,6 +57,23 @@
     // }
   };
 </script>
+
+
+{#await db.entries
+      .orderBy("dateOfOccurrence")
+      .reverse()
+      .first()
+ then lastEntry}
+ {#if lastEntry}
+  <h1>Last entry: {dayjs.unix(lastEntry.dateOfOccurrence).format("YYYY-MM-DD")}</h1>   
+ {/if}
+{/await}
+
+{#await db.entries.count() then totalEntries}
+ <h1>
+   Total entries: {totalEntries} 
+ </h1>
+{/await}
 
 <div class="flex flex-col space-y-4">
   {#if Object.values(severityData).every((x) => x === 0)}
