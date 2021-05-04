@@ -38,16 +38,26 @@
   }
 </script>
 
-<div>
-  <label for="from">From</label>
+<div class="flex flex-row items-center">
   <input
     type="date"
     bind:value={fromDate}
     class="px-3 py-3 placeholder-blueGray-300 text-blueGray-600 relative bg-white bg-white rounded text-md border-0 shadow outline-none focus:outline-none focus:ring w-full"
   />
-</div>
-<div>
-  <label for="to">To</label>
+  <svg
+    xmlns="http://www.w3.org/2000/svg"
+    class="h-10 w-10 mx-3"
+    fill="none"
+    viewBox="0 0 24 24"
+    stroke="currentColor"
+  >
+    <path
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      stroke-width="2"
+      d="M14 5l7 7m0 0l-7 7m7-7H3"
+    />
+  </svg>
   <input
     type="date"
     bind:value={toDate}
@@ -65,7 +75,8 @@
       </p>
     {:else}
       {#each entries as entry}
-        <div class="relative bg-white py-6 px-6 rounded-3xl my-4 shadow-xl cursor-pointer" 
+        <div
+          class="relative bg-white py-6 px-6 rounded-3xl my-4 shadow-xl cursor-pointer"
           on:click={viewEntryDetails(entry)}
         >
           <div
@@ -103,11 +114,11 @@
               </div>
             </div>
             <div class="flex flex-row flex-wrap text-gray-400 text-sm mt-3">
-                {#if entry?.labels?.length > 0}
-                  {#each entry.labels as label}
-                    <div class="border rounded px-3 py-2 mr-2 mb-2">{label}</div>
-                  {/each}
-                {/if}
+              {#if entry?.labels?.length > 0}
+                {#each entry.labels as label}
+                  <div class="border rounded px-3 py-2 mr-2 mb-2">{label}</div>
+                {/each}
+              {/if}
             </div>
           </div>
         </div>
