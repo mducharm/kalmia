@@ -22,6 +22,10 @@
     return counts;
   }
 
+  function daysSinceDate(date: number) {
+    return dayjs().diff(dayjs.unix(date), "days");
+  }
+
   onMount(async () => (severityData = await getSeverityCounts()));
   let data: any;
   $: data = {
@@ -58,21 +62,27 @@
   };
 </script>
 
-
-{#await db.entries
-      .orderBy("dateOfOccurrence")
-      .reverse()
-      .first()
- then lastEntry}
- {#if lastEntry}
-  <h1>Last entry: {dayjs.unix(lastEntry.dateOfOccurrence).format("YYYY-MM-DD")}</h1>   
- {/if}
-{/await}
-
-{#await db.entries.count() then totalEntries}
- <h1>
-   Total entries: {totalEntries} 
- </h1>
+{#await db.entries.orderBy("dateOfOccurrence").reverse().first() then lastEntry}
+  {#if lastEntry}
+    <article
+      class="flex flex-col shadow-xl mx-auto max-w-sm bg-blue-100 py-10 px-12 transform duration-500 hover:-translate-y-2 cursor-pointer rounded-md"
+    >
+      <h1 class="font-extrabold text-6xl mb-10 text-gray-800">
+        {daysSinceDate(lastEntry.dateOfOccurrence)}
+      </h1>
+      <h2 class="font-bold mb-5 text-gray-800">
+        {daysSinceDate(lastEntry.dateOfOccurrence) === 1 ? "day" : "days"} since
+        last entry
+      </h2>
+      <p class="text-sm leading-relaxed text-gray-700">
+        {#await db.entries.count() then totalEntries}
+          <h1>
+            Total entries: {totalEntries}
+          </h1>
+        {/await}
+      </p>
+    </article>
+  {/if}
 {/await}
 
 <div class="flex flex-col space-y-4">
