@@ -44,7 +44,7 @@
 >
   <div class="pt-4">
     <p class="text-sm text-gray-600">
-      Edit details by submitting a new entry below.
+      Edit details using the form below.
     </p>
   </div>
 
