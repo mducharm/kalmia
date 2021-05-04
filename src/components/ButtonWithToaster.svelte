@@ -1,6 +1,7 @@
 <script lang="ts">
   import { blur } from "svelte/transition";
   export let action: () => void;
+  export let text = "Submit";
 
   let showModal = false;
   $: if (showModal) setTimeout(() => (showModal = false), 2000);
@@ -15,7 +16,7 @@
   on:click={handleSuccess}
   class="w-full my-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
 >
-  Submit
+  {text}
 </button>
 
 {#if showModal}
