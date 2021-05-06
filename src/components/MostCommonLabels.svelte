@@ -28,7 +28,7 @@
 </script>
 
 <section
-  class="bg-gradient-to-b from-white to-blue-300 p-5 py-10 mt-6 text-left transform duration-500 hover:-translate-y-1 hover:shadow-xl cursor-pointer bg-gray-100 divide-y border-2"
+  class="bg-gradient-to-b from-white to-blue-200 p-5 py-10 mt-6 text-left transform duration-500 hover:-translate-y-1 hover:shadow-xl cursor-pointer bg-gray-100 divide-y border-2"
 >
   <div>
     <h2 class="font-semibold mb-2 mt-4 text-gray-600 text-2xl">
@@ -54,7 +54,7 @@
         {/if}
       </span>
       <span
-        class="bg-teal-100 inline-flex items-center justify-center px-3 py-2 mr-2 my-auto text-lg font-bold leading-none rounded-full shadow-md ring-1 ring-blue-500"
+        class="bg-white inline-flex items-center justify-center px-3 py-2 mr-2 my-auto text-lg font-bold leading-none rounded-full shadow-md ring-1 ring-blue-500"
       >
         {count}
       </span>

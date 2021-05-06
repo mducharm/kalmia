@@ -67,7 +67,7 @@
 {#await db.entries.orderBy("dateOfOccurrence").reverse().first() then lastEntry}
   {#if lastEntry}
     <article
-      class="flex flex-col shadow-xl mx-auto max-w-sm bg-gradient-to-r from-teal-100 to-teal-300 py-10 px-12 transform duration-500 hover:-translate-y-2 cursor-pointer rounded-md"
+      class="flex flex-col shadow-xl mx-auto max-w-sm bg-gradient-to-r from-teal-100 to-teal-200 py-10 px-12 transform duration-500 hover:-translate-y-2 cursor-pointer rounded-md"
     >
       <h1 class="font-extrabold text-6xl mb-10 text-gray-800">
         {daysSinceDate(lastEntry.dateOfOccurrence)}
