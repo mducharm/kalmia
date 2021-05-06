@@ -4,8 +4,8 @@
 
   let colors: string;
   $: colors = checked
-    ? `bg-emerald-300 hover:bg-emerald-700 text-black`
-    : "bg-gray-300 hover:bg-gray-400 text-gray-700"
+    ? `bg-emerald-200 hover:bg-emerald-600 text-black`
+    : "bg-gray-200 hover:bg-gray-400 text-gray-700"
 </script>
 
 <div

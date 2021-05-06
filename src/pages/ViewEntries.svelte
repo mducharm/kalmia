@@ -116,7 +116,7 @@
             <div class="flex flex-row flex-wrap text-gray-400 text-sm mt-3">
               {#if entry?.labels?.length > 0}
                 {#each entry.labels as label}
-                  <div class="border rounded px-3 py-2 mr-2 mb-2">{label}</div>
+                  <div class="border rounded px-3 py-2 mr-2 mb-2 shadow-md">{label}</div>
                 {/each}
               {/if}
             </div>
