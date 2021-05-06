@@ -3,7 +3,7 @@ import { CacheableResponsePlugin } from 'workbox-cacheable-response';
 import { ExpirationPlugin } from 'workbox-expiration';
 import { cleanupOutdatedCaches, createHandlerBoundToURL, precacheAndRoute } from 'workbox-precaching';
 import { NavigationRoute, registerRoute } from 'workbox-routing';
-import { CacheFirst, StaleWhileRevalidate } from 'workbox-strategies';
+import { CacheFirst, StaleWhileRevalidate, NetworkFirst } from 'workbox-strategies';
 
 declare const self: {
   skipWaiting: () => void;
@@ -80,7 +80,8 @@ registerRoute(
 
 // Make JS/CSS fast by returning assets from the cache
 // But make sure they're updating in the background for next use
-registerRoute(/\.(?:js|map|css)$/, new StaleWhileRevalidate({ cacheName: 'style-script-cache' }));
+// registerRoute(/\.(?:js|map|css)$/, new StaleWhileRevalidate({ cacheName: 'style-script-cache' }));
+registerRoute(/\.(?:js|map|css)$/, new NetworkFirst({ cacheName: 'style-script-cache' }));
 
 // Cache images
 // But clean up after a while
