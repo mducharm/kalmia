@@ -24,7 +24,6 @@
   let isLabelBlank = (x: string[]) => x.filter((x) => x !== "").length === 0;
 
   let counts = getLabelCounts(allEntryLabels);
-  console.log(counts);
 </script>
 
 <section
