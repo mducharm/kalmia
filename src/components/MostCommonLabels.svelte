@@ -27,7 +27,7 @@
 </script>
 
 <section
-  class="bg-gradient-to-b from-white to-blue-200 p-5 py-10 mt-6 text-left transform duration-500 hover:-translate-y-1 hover:shadow-xl cursor-pointer bg-gray-100 divide-y border-2"
+  class="bg-gradient-to-b from-white to-blue-200 p-5 py-10 mt-6 text-left transform duration-500 hover:-translate-y-1 hover:shadow-xl cursor-pointer bg-gray-100 divide-y border-2 md:w-1/2 mx-auto"
 >
   <div>
     <h2 class="font-semibold mb-2 mt-4 text-gray-600 text-2xl">

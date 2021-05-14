@@ -57,10 +57,10 @@
 </script>
 
 <form
-  class="mb-5 rounded pb-8 divide-y-2 divide-teal-900 divide-opacity-20"
+  class="mb-5 rounded pb-8 divide-y-2 divide-teal-900 divide-opacity-20 md:w-1/2 mx-auto"
   on:submit|preventDefault
 >
-  <div class="py-5">
+  <div class="py-5 md:mx-auto">
     <p class="text-sm text-gray-600">
       Not feeling well? Record details by submitting a new entry below.
     </p>

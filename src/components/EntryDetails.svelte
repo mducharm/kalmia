@@ -31,7 +31,7 @@
 </script>
 
 <div transition:fly={{ x: 200, duration: 200 }}>
-  <div class="flex flex-row justify-around">
+  <div class="flex flex-row justify-around md:w-1/2 mx-auto">
     <button
       on:click={goBack}
       class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded w-full mx-2"
@@ -57,7 +57,7 @@
     <EditEntryForm bind:entry on:save={() => (isEditing = false)} />
   {:else}
     <div
-      class="relative bg-white py-6 px-6 rounded-3xl my-4 shadow-xl cursor-pointer"
+      class="relative bg-white py-6 px-6 rounded-3xl my-4 shadow-xl cursor-pointer md:w-1/2 mx-auto"
     >
       <div
         class="flex items-center justify-center rounded-full py-2 px-4 shadow-xl font-bold text-lg {getSeverityColor(

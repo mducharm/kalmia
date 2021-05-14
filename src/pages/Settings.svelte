@@ -32,7 +32,7 @@
   }
 </script>
 
-<div class="container mx-auto my-8">
+<div class="container mx-auto my-8 md:w-1/2 mx-auto">
   <button
     on:click={() => currentPage.set({ name: "About", component: About })}
     class="w-full my-4 bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
@@ -89,13 +89,13 @@
       </div>
     {/each}
   </div>
+
+  <ExportToCSVButton />
+
+  <ButtonWithConfirm
+    actionName="Reset"
+    contents="Are you sure you wish to reset the app? This will delete all data and cannot be undone. If you wish to keep any existing data, export first."
+    class="w-full my-5"
+    action={clearDatabase}
+  />
 </div>
-
-<ExportToCSVButton />
-
-<ButtonWithConfirm
-  actionName="Reset"
-  contents="Are you sure you wish to reset the app? This will delete all data and cannot be undone. If you wish to keep any existing data, export first."
-  class="w-full"
-  action={clearDatabase}
-/>

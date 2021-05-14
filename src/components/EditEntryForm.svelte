@@ -39,7 +39,7 @@
 </script>
 
 <form
-  class="mb-5 rounded pb-8 divide-y-2 divide-teal-900 divide-opacity-20"
+  class="mb-5 rounded pb-8 divide-y-2 divide-teal-900 divide-opacity-20 md:w-1/2 mx-auto"
   on:submit|preventDefault
 >
   <div class="pt-4">

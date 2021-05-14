@@ -38,7 +38,7 @@
   }
 </script>
 
-<div class="flex flex-row items-center">
+<div class="flex flex-row items-center md:w-1/2 mx-auto">
   <input
     type="date"
     bind:value={fromDate}
@@ -68,7 +68,7 @@
 {#await entriesToGet}
   <p>Loading...</p>
 {:then entries}
-  <div>
+  <div class="md:w-1/2 mx-auto">
     {#if entries.length === 0}
       <p class="text-sm text-gray-600 pb-4">
         You haven't added any entries yet.

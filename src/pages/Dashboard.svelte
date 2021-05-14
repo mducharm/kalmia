@@ -67,7 +67,7 @@
 {#await db.entries.orderBy("dateOfOccurrence").reverse().first() then lastEntry}
   {#if lastEntry}
     <article
-      class="flex flex-col shadow-xl mx-auto max-w-sm bg-gradient-to-r from-teal-100 to-teal-200 py-10 px-12 transform duration-500 hover:-translate-y-2 cursor-pointer rounded-md"
+      class="flex flex-col shadow-xl mx-auto md:w-1/2 bg-gradient-to-r from-teal-100 to-teal-200 py-10 px-12 transform duration-500 hover:-translate-y-2 cursor-pointer rounded-md"
     >
       <h1 class="font-extrabold text-6xl mb-10 text-gray-800">
         {daysSinceDate(lastEntry.dateOfOccurrence)}
@@ -88,7 +88,7 @@
 {/await}
 
 <section
-  class="p-5 py-10 mt-6 text-left duration-500 hover:shadow-xl cursor-pointer bg-gray-100  border-2"
+  class="p-5 py-10 mt-6 text-left duration-500 hover:shadow-xl cursor-pointer bg-gray-100 border-2 md:w-1/2 mx-auto"
 >
   <div>
     <h2 class="font-semibold mb-2 mt-4 text-gray-600 text-2xl">Severity</h2>
