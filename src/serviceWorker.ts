@@ -52,36 +52,11 @@ const defaultNavigationRoute = new NavigationRoute(defaultRouteHandler, {
 });
 registerRoute(defaultNavigationRoute);
 
-// Cache the Google Fonts stylesheets with a stale while revalidate strategy.
-registerRoute(
-  /^https:\/\/fonts\.googleapis\.com/,
-  new StaleWhileRevalidate({
-    cacheName: 'google-fonts-stylesheets'
-  })
-);
-
-// Cache the Google Fonts webfont files with a cache first strategy for 1 year.
-registerRoute(
-  /^https:\/\/fonts\.gstatic\.com/,
-  new CacheFirst({
-    cacheName: 'google-fonts-webfonts',
-    plugins: [
-      new CacheableResponsePlugin({
-        statuses: [0, 200]
-      }),
-      new ExpirationPlugin({
-        maxAgeSeconds: YEAR_IN_SECONDS,
-        maxEntries: 30,
-        purgeOnQuotaError: true // Automatically cleanup if quota is exceeded.
-      })
-    ]
-  })
-);
 
 // Make JS/CSS fast by returning assets from the cache
 // But make sure they're updating in the background for next use
 // registerRoute(/\.(?:js|map|css)$/, new StaleWhileRevalidate({ cacheName: 'style-script-cache' }));
-registerRoute(/\.(?:js|map|css)$/, new NetworkFirst({ cacheName: 'style-script-cache' }));
+registerRoute(/\.(?:js|map|css)$/, new StaleWhileRevalidate({ cacheName: 'style-script-cache' }));
 
 // Cache images
 // But clean up after a while
