@@ -9,17 +9,20 @@
   import ServiceWorkerIntegration from "components/ServiceWorkerIntegration.svelte";
   import { onMount } from "svelte";
   import { db } from "./db/Database";
-import { seed } from "./db/seed";
+  import { seed } from "./db/seed";
 
   onMount(async () => {
     let isFirstVisit = localStorage.getItem("visited") !== "true";
     let dbIsEmpty = (await db.entries.count()) === 0;
 
+    // populate db with test data
     if (isFirstVisit && dbIsEmpty) {
-      // populate db with test data
       await seed();
       localStorage.setItem("visited", "true");
+    }
 
+    // set initial page to dashboard only if data exists
+    if (dbIsEmpty) {
       currentPage.set({
         name: "About",
         component: About,
@@ -56,7 +59,6 @@ import { seed } from "./db/seed";
       props: {},
     },
   ];
-
 </script>
 
 <Tailwind />
