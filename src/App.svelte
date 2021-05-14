@@ -7,6 +7,32 @@
   import ViewEntries from "./pages/ViewEntries.svelte";
   import About from "./pages/About.svelte";
   import ServiceWorkerIntegration from "components/ServiceWorkerIntegration.svelte";
+  import { onMount } from "svelte";
+  import { db } from "./db/Database";
+import { seed } from "./db/seed";
+
+  onMount(async () => {
+    let isFirstVisit = localStorage.getItem("visited") !== "true";
+    let dbIsEmpty = (await db.entries.count()) === 0;
+
+    if (isFirstVisit && dbIsEmpty) {
+      // populate db with test data
+      await seed();
+      localStorage.setItem("visited", "true");
+
+      currentPage.set({
+        name: "About",
+        component: About,
+        props: {},
+      });
+    } else {
+      currentPage.set({
+        name: "Dashboard",
+        component: Dashboard,
+        props: {},
+      });
+    }
+  });
 
   const pages = [
     {
@@ -31,13 +57,6 @@
     },
   ];
 
-  let initialPage = {
-    name: "About",
-    component: About,
-    props: {},
-  };
-
-  currentPage.set(initialPage);
 </script>
 
 <Tailwind />
