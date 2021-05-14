@@ -5,6 +5,7 @@
   import About from "./About.svelte";
   import ButtonWithConfirm from "components/ButtonWithConfirm.svelte";
   import { onMount } from "svelte";
+  import ExportToCSVButton from "components/ExportToCSVButton.svelte";
 
   let labels: Label[] = [];
   let newLabel = "";
@@ -23,8 +24,6 @@
       labels = await db.labels.toArray();
     };
   }
-
-  function exportToXlsx() {}
 
   function clearDatabase() {
     db.delete().then(() => db.open());
@@ -57,9 +56,7 @@
   >
   <div class="flex flex-wrap justify-center my-4">
     {#if labels.length === 0}
-      <p class="text-sm text-gray-600 pb-4">
-        No labels added yet.
-        </p>
+      <p class="text-sm text-gray-600 pb-4">No labels added yet.</p>
     {/if}
     {#each labels as label}
       <div
@@ -94,11 +91,7 @@
   </div>
 </div>
 
-<button
-  on:click={exportToXlsx}
-  class="w-full bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
-  >Export to Excel</button
->
+<ExportToCSVButton />
 
 <ButtonWithConfirm
   actionName="Reset"
