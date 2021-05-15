@@ -20,12 +20,7 @@
     const csvData = new Blob([`${bom}${csvContent}`], {
       type: "text/csv;charset=utf-8;",
     });
-    let csvURL = "";
-    if (navigator.msSaveBlob) {
-      csvURL = navigator.msSaveBlob(csvData, `${filename}.csv`);
-    } else {
-      csvURL = window.URL.createObjectURL(csvData);
-    }
+    let csvURL = window.URL.createObjectURL(csvData);
     const link = document.createElement("a");
     link.href = csvURL;
     link.setAttribute("download", `${filename}.csv`);
